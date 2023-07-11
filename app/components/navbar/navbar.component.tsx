@@ -5,7 +5,7 @@ import { Action } from '../action/action.component';
 type Props = {};
 export const Navbar = (props: Props) => {
   return (
-    <nav className='pl-[60px] pr-10 py-6 fixed w-full'>
+    <nav className='pl-[60px] z-10 pr-10 py-6 fixed w-full'>
       <div className='container mx-auto items-center flex flex-row justify-between'>
         <Link className='text-nav text-zinc-800' href='/'>
           IVI
