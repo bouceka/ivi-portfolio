@@ -5,7 +5,7 @@ import { ProjectCard } from './components/project-card/project-card.component';
 import { ServiceCard } from './components/service-card/service-card.component';
 import { AboutMe } from './components/about-me/about-me.component';
 import { WorkTogether } from './components/work-together/work-together.component';
-
+import { Analytics } from '@vercel/analytics/react';
 const projectCard = {
   imageURL: 'https://res.cloudinary.com/ahoy-house/image/upload/f_auto,q_auto/v1/IVI-Portfolio/dpe6bb7metmbs37rn1cx',
   occupation: 'Internship',
@@ -17,6 +17,7 @@ const projectCard = {
 export default function Home() {
   return (
     <main className=''>
+      <Analytics/>
       <Header />
       <SectionTitle title='WORK' id='work' />
       <section className='project-card-group container w-[920px] mx-auto'>
