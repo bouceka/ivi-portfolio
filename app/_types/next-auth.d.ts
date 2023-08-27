@@ -15,8 +15,11 @@ declare module 'next-auth' {
     // }
 
     interface User {
-        role: string
-    }
+        id: string;
+        name: string;
+        password: string;
+        role: string | null; // Allow for null values
+    } 
 }
 
 // declare module 'next-auth/jwt' {

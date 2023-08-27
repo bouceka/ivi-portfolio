@@ -1,6 +1,6 @@
 import { getUsers } from '@/app/_actions/userActions';
 import { compare, hash } from 'bcryptjs';
-import type { NextAuthOptions } from 'next-auth';
+import type { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export async function hashPassword(password: string) {
@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
                 username: { label: 'Username', type: 'text' },
                 password: { label: 'Password', type: 'password' },
             },
-            async authorize(credentials) {
+            async authorize(credentials: Record<"password" | "username", string> | undefined): Promise<User | null>{
                 const usersCollection = getUsers;
                 try {
                     if (!credentials) {
