@@ -1,0 +1,98 @@
+.markdown {
+    margin-top: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    line-height: 150%;
+    font-size: 1.25rem;
+    font-weight: 300;
+
+    p {
+        // font-size: 1.25rem;
+
+    }
+
+    p:has(> img) {
+        display: flex;
+        justify-content: center;
+        margin: 1.6rem 0;
+    }
+
+    li {
+        margin: 0.4rem 0;
+    }
+
+    code {
+        background-color: var(--color-neutral-100);
+        padding: 0 0.4rem;
+        margin: 0.4rem 0;
+        border-radius: 2px;
+        overflow-wrap: break-word;
+    }
+
+    a {
+        color: var(--color-primary-600);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:focus {
+        outline: none;
+    }
+
+    img {
+        // max-width: 70rem;
+    }
+
+    h2 {
+        position: relative;
+        padding: 0 .25rem;
+        font-weight: 500;
+        font-size: 1.2rem;
+        display: inline-block;
+        background-color: var(--background-color-primary);
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: var(--color-neutral-700);
+        }
+
+        span {
+            margin-left: 1.6rem;
+            position: relative;
+            background-color: var(--background-color-primary);
+            padding: 0 0.25rem;
+            z-index: 1;
+            font-size: 1.6rem;
+        }
+    }
+
+
+    td,
+    th {
+        padding: 8px 16px;
+        // border: 1px solid $color-neutral-400;
+    }
+
+    tr {
+        background-color: var(--background-color-secondary);
+    }
+
+    tr:nth-child(2n) {
+        background-color: var(--color-neutral-100);
+    }
+
+    // @include respond(tab-port) {
+    //   img {
+    //     width: 90%;
+    //   }
+    // }
+}

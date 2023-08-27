@@ -1,0 +1,153 @@
+@forward "abstracts";
+@forward "base";
+@forward "components";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// html {
+//     @apply text-[62.5%]
+//   }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer utilities {
+  .shift-x {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+.animate-section-up {
+  animation: scroll-img-up 300ms ease-in-out;
+  opacity: 1;
+
+
+  @keyframes scroll-img-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @keyframes scroll-img-mobile-up {
+    0% {
+      opacity: 0;
+      transform: translateY(10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+
+.animate-section-down {
+  animation: scroll-img-down 500ms ease-in-out;
+  opacity: 1;
+
+
+  @keyframes scroll-img-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @keyframes scroll-img-mobile-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+.animate-section-right {
+  animation: scroll-img-right 500ms ease-in-out;
+  opacity: 1;
+
+
+  @keyframes scroll-img-right {
+    0% {
+      opacity: 0;
+      transform: translateX(-20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @keyframes scroll-img-mobile-right {
+    0% {
+      opacity: 0;
+      transform: translateX(-10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+
+.animate-section-left {
+  animation: scroll-img-left 500ms ease-in-out;
+  opacity: 1;
+
+
+  @keyframes scroll-img-left {
+    0% {
+      opacity: 0;
+      transform: translateX(20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @keyframes scroll-img-mobile-left {
+    0% {
+      opacity: 0;
+      transform: translateX(10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}
+
+.loading-animation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shimmer {
+  width: 100%;
+  height: 20px;
+  background-color: #f0f0f0;
+  animation: shimmer-animation 1s infinite linear;
+}
+
+@keyframes shimmer-animation {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}

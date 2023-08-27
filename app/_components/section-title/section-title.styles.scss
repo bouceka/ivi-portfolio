@@ -1,0 +1,18 @@
+@use '../../_styles/abstracts/' as *;
+@use '../../_styles/abstracts' as *;
+
+.section-title {
+  position: relative;
+  margin: 1.5rem;
+  & > div {
+    border-bottom: 1px solid var(--text-black-primary);
+  }
+
+  & > h3 {
+    position: absolute;
+    left: 2.4rem;
+    padding: 0 .25rem;
+    font-weight: 500;
+    background-color:var(--background-color-primary) ;
+  }
+}

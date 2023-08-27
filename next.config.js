@@ -9,6 +9,10 @@ const nextConfig = {
     images: {
         domains: ['res.cloudinary.com'],
     },
+    experimental: {
+        serverActions: true,
+    },
+    trailingSlash: true,
 }
 
 module.exports = nextConfig
