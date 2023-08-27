@@ -1,0 +1,1 @@
+ALTER TABLE "projects" ADD COLUMN "is_active" boolean DEFAULT false NOT NULL;

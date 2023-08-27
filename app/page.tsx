@@ -9,7 +9,7 @@ import { getAllProjects } from './_actions/projectActions';
 import { Suspense } from 'react';
 
 export default async function Home() {
-  const allProjects = await getAllProjects(4);
+  const allProjects = await getAllProjects(4,true);
 
   return (
     <main className='px-[4%] md:px-0'>

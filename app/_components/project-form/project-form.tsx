@@ -33,6 +33,7 @@ const validationSchema = yup.object().shape({
   categories: yup.string().required(),
   featuredImageUrl: yup.string().required(),
   markdown: yup.string().required(),
+  isActive: yup.boolean(),
 });
 
 type ProjectFormProps = NewProjectProps | EditProjectProps;
@@ -83,6 +84,7 @@ export const ProjectForm = async (props: ProjectFormProps) => {
     categories: props.type === 'edit' ? props.project.categories : '',
     slug: props.type === 'edit' ? props.project.slug : '',
     createdAt: props.type === 'edit' ? props.project.createdAt : new Date(),
+    isActive: props.type === 'edit' ? props.project.isActive : false,
     markdown: props.type === 'edit' ? props.project.markdown : '',
   };
   return (
@@ -103,6 +105,16 @@ export const ProjectForm = async (props: ProjectFormProps) => {
                 <Input onChange={handleChange} value={values.excerpt} required label="Excerpt" name="excerpt" />
                 <Input onChange={handleChange} value={values.categories} required label="Categories" name="categories" />
                 <Input onChange={handleChange} value={values.featuredImageUrl} required label="Featured Image" name="featuredImageUrl" />
+                <div>
+                  <label  className="pr-8" htmlFor="isActive">Is Active</label>
+                  <input
+                    onChange={handleChange}
+                    type="checkbox"
+                    value={values.isActive.toString()}
+                    placeholder="Is Active"
+                    name="isActive"
+                  />
+                </div>
                 <Textarea onChange={handleChange} value={values.markdown} required label="Content" name="markdown" />
                 <Action as="button" className="w-full" styleType="outline">
                   Send Message

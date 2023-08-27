@@ -13,13 +13,16 @@ export const insertProject = async (project: NewProject): Promise<Project[]> => 
     return db.insert(projects).values(project).returning();
 };
 
-export const getAllProjects = async (limit: number | null) => {
+export const getAllProjects = async (limit: number | null, isActive = false) => {
 
     // Build the query conditionally based on the limit
     const queryBuilder = db.select().from(projects)
 
     if (limit !== null) {
         queryBuilder.limit(limit);
+    }
+    if (isActive) {
+        queryBuilder.where(eq(projects.isActive, true));
     }
     return await queryBuilder.execute();
 
@@ -34,7 +37,7 @@ export const getProjectBySlug = async (slug: string): Promise<Project> => {
     return project
 }
 
-export const updateProject = async (projectId: string, project: Partial<Project>):Promise<Project[]> => await db.update(projects)
+export const updateProject = async (projectId: string, project: Partial<Project>): Promise<Project[]> => await db.update(projects)
     .set(project)
     .where(eq(projects.id, projectId)).returning();
 

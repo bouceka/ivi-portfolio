@@ -1,4 +1,4 @@
-import { pgEnum, pgTable, text, timestamp, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
+import { boolean, pgEnum, pgTable, text, timestamp, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
 import { InferModel, eq, relations } from 'drizzle-orm';
 import { sql } from '@vercel/postgres';
 import { drizzle } from 'drizzle-orm/vercel-postgres';
@@ -27,16 +27,6 @@ export const usersRelations = relations(users, ({ many }) => ({
 export type User = InferModel<typeof users>;
 export type NewUser = InferModel<typeof users, 'insert'>;
 
-export const insertUser = async (user: NewUser): Promise<User[]> => {
-  return db.insert(users).values(user).returning();
-};
-
-// export const getUser: User[] = await db.select().from(users);
-
-// export const deleteUser = async (userId: string): Promise<User[]> => {
-//   return db.delete(users).where(eq(users.id, userId)).returning();
-// };
-
 // End - User
 
 
@@ -50,6 +40,7 @@ export const projects = pgTable('projects', {
   excerpt: text('excerpt').notNull(),
   featuredImageUrl: text('featuredImageUrl').notNull(),
   markdown: text('markdown').notNull(),
+  isActive:boolean('is_active').notNull().default(false),
   categories: text('categories').notNull(),
   userId: uuid('user_id').notNull().references(() => users.id),
 });
@@ -68,10 +59,6 @@ export const projectsRelationsUser = relations(projects, ({ one }) => ({
 export type Project = InferModel<typeof projects>;
 export type NewProject = InferModel<typeof projects, 'insert'>;
 
-
-// export const deleteProject = async (userId: string): Promise<Project[]> => {
-//   return db.delete(projects).where(eq(projects.id, userId)).returning();
-// };
 
 // End - Project
 
