@@ -7,6 +7,7 @@ export const projectCard: Project = {
   //   occupation: 'Internship',
   excerpt: 'Lorem ipsum dolor sit amet consectetur. Magnis nulla cursus cras duis natoque.',
   title: 'Breka Bakery',
+  isActive:false,
   slug: '',
   userId: 'your user ID',
   categories: 'your categories',
