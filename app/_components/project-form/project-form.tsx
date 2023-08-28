@@ -16,6 +16,7 @@ import { Action } from '@/app/_components/action/action.component';
 import { Markdown } from '../markdown/markdown';
 import { insertProject, updateProject } from '@/app/_actions/projectActions';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 type NewProjectProps = {
   type: 'new';
@@ -43,6 +44,7 @@ type FormValue = object & Omit<Project, 'id' | 'userId'>;
 export const ProjectForm = async (props: ProjectFormProps) => {
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter()
 
   const handleForm = async (values: FormValue, actions: FormikHelpers<FormValue>) => {
     try {
@@ -62,9 +64,10 @@ export const ProjectForm = async (props: ProjectFormProps) => {
         });
         if (state.length === 0) throw new Error('Could not update the project');
       }
-      toast.success('Message sent');
+      toast.success(`Project ${props.type === 'edit' ? 'edited' : 'created'}`);
       setLoading(false);
       actions.resetForm();
+      router.push('/admin')
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message);
@@ -106,18 +109,20 @@ export const ProjectForm = async (props: ProjectFormProps) => {
                 <Input onChange={handleChange} value={values.categories} required label="Categories" name="categories" />
                 <Input onChange={handleChange} value={values.featuredImageUrl} required label="Featured Image" name="featuredImageUrl" />
                 <div>
-                  <label  className="pr-8" htmlFor="isActive">Is Active</label>
+                  <label className="pr-8" htmlFor="isActive">
+                    Is Active
+                  </label>
                   <input
                     onChange={handleChange}
                     type="checkbox"
-                    value={values.isActive.toString()}
+                    checked={values.isActive}
                     placeholder="Is Active"
                     name="isActive"
                   />
                 </div>
                 <Textarea onChange={handleChange} value={values.markdown} required label="Content" name="markdown" />
                 <Action as="button" className="w-full" styleType="outline">
-                  Send Message
+                  {props.type === 'edit' ? 'Edit' : 'Create'} Project
                 </Action>
                 <Markdown content={values.markdown} />
               </form>
