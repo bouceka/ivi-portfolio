@@ -8,7 +8,7 @@ export default {
   driver: 'pg',
   dbCredentials: {
     connectionString:
-      'postgres://default:pLTqjCGEl10M@ep-cold-block-18769482-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require',
+      process.env.DRIZZLE_CONFIG || ''
   },
   strict: false,
 } satisfies Config;
